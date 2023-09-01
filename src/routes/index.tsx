@@ -69,7 +69,7 @@ const index = () => {
           min={1}
           max={100000}
           onChange={(e) => setWidth(parseInt(e.target.value))}
-          className="py-3 px-5 block w-48 border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+          className="py-3 px-5 block w-48 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 bg-slate-900 border-gray-700 text-gray-400"
           placeholder="Enter Width"
         ></input>
       </div>
@@ -81,7 +81,7 @@ const index = () => {
           min={1}
           max={100000}
           onChange={(e) => setHeight(parseInt(e.target.value))}
-          className="py-3 px-5 block w-48 border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+          className="py-3 px-5 block w-48  rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 bg-slate-900 border-gray-700 text-gray-400"
           placeholder="Enter Width"
         ></input>
       </div>
@@ -93,7 +93,7 @@ const index = () => {
           min={1}
           max={100000}
           onChange={(e) => setLimit(parseInt(e.target.value))}
-          className="py-3 px-5 block w-48 border-gray-200 rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+          className="py-3 px-5 block w-48  rounded-full text-sm focus:border-blue-500 focus:ring-blue-500 bg-slate-900 border-gray-700 text-gray-400"
           placeholder="Enter Width"
         ></input>
       </div>
@@ -108,7 +108,7 @@ const index = () => {
             setCost(0);
             handleCalculateClick();
           }}
-          className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-gray-600 border font-semibold text-gray-800 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 ring-offset-white focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:bg-gray-700 dark:hover:bg-gray-900 dark:text-white"
+          className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md bg-gray-600 border font-semibold text-gray-800 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 ring-offset-white focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm bg-gray-700 hover:bg-gray-900 text-white"
         >
           Calculate Cost
         </button>
