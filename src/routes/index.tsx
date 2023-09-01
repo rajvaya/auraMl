@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 const index = () => {
-  const [width, setWidth] = useState(10000);
-  const [height, setHeight] = useState(10000);
+  const [width, setWidth] = useState(100);
+  const [height, setHeight] = useState(100);
   const [limit, setLimit] = useState(100);
   const [cost, setCost] = useState(0);
   const [isLoading, setLoader] = useState(false);

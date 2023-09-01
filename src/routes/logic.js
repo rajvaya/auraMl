@@ -45,4 +45,4 @@ let data = [
   [1, 2, 4],
 ]
 // calculateCost(data);
-calculateCost(generateRandomGrid(10000, 10000, 1000));
+calculateCost(generateRandomGrid(100 , 100, 100));
