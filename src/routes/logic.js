@@ -1,3 +1,5 @@
+import readline from 'readline';
+
 function generateRandomGrid(L, W, maxLimit) {
   let grid = [];
   for (let l = 0; l < L; l++) {
@@ -39,15 +41,41 @@ function calculateCost(grid) {
   console.log(totalCost);
 }
 
-let data = [
-  [1, 3, 4],
-  [2, 2, 3],
-  [1, 2, 4],
-]
-calculateCost(data);
-calculateCost(generateRandomGrid(10 , 10, 100));
-calculateCost(generateRandomGrid(1000 , 1000, 100000));
-calculateCost(generateRandomGrid(10000, 10000, 100000));
-calculateCost(generateRandomGrid(1000, 100000, 100000));
-calculateCost(generateRandomGrid(10000, 20000, 10000));
-
+function takeUserInput() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  
+  rl.question("Enter two space-separated integers L and W: ", (dimensions) => {
+    const [L, W] = dimensions.split(' ').map(Number);
+    if (isNaN(L) || isNaN(W) || L <= 0 || W <= 0) {
+      console.log("Invalid input. L and W must be positive integers.");
+      rl.close();
+      return;
+    }
+    const grid = [];
+    console.log("Enter the grid values (each row separated by a new line):");
+    let rowCounter = 0;
+    function readRow() {
+      rl.question(`Row ${rowCounter + 1} (${W} space-separated integers): `, (rowInput) => {
+        const rowValues = rowInput.split(' ').map(Number);
+        if (rowValues.length === W && rowValues.every(val => val !== 0)) {
+          grid.push(rowValues);
+          rowCounter++;
+          if (rowCounter < L) {
+            readRow();
+          } else {
+            rl.close();
+            calculateCost(grid);
+          }
+        } else {
+          console.log(`Invalid input. Please enter ${W} non-zero integers.`);
+          readRow();
+        }
+      });
+    }
+    readRow();
+  });
+}
+takeUserInput();
