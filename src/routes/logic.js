@@ -1,6 +1,6 @@
 import readline from 'readline';
 
-function generateRandomGrid(L, W, maxLimit) {
+export function generateRandomGrid(L, W, maxLimit) {
   let grid = [];
   for (let l = 0; l < L; l++) {
     let row = [];
@@ -13,27 +13,17 @@ function generateRandomGrid(L, W, maxLimit) {
   return grid;
 }
 
-const directions = [
-  { x: 0, y: -1 }, // top
-  { x: -1, y: 0 }, // left
-  { x: 0, y: 1 }, // bottom
-  { x: 1, y: 0 }, // right
-];
-
-function calculateCost(grid) {
+export function calculateCost(grid) {
   console.time("time")
   let totalCost = 0;
   for (let l = 0; l < grid.length; l++) {
     for (let w = 0; w < grid[l].length; w++) {
-      let currFloor = grid[l][w];
-      for (const direction of directions) {
-        let newL = l + direction.x;
-        let newW = w + direction.y;
-        if (grid?.[newL]?.[newW] === undefined) {
-          totalCost += currFloor;
-        } else if (currFloor > grid[newL][newW]) {
-          totalCost += currFloor - grid[newL][newW];
-        }
+      totalCost += grid[l][w] * 4; 
+      if (w >= 1) {
+        totalCost -= Math.min(grid[l][w - 1], grid[l][w]) * 2; // check left
+      }
+      if (l >= 1) {
+        totalCost -= Math.min(grid[l - 1][w], grid[l][w]) * 2; // check top
       }
     }
   }
@@ -46,7 +36,6 @@ function takeUserInput() {
     input: process.stdin,
     output: process.stdout
   });
-  
   rl.question("Enter two space-separated integers L and W: ", (dimensions) => {
     const [L, W] = dimensions.split(' ').map(Number);
     if (isNaN(L) || isNaN(W) || L <= 0 || W <= 0) {
@@ -78,4 +67,5 @@ function takeUserInput() {
     readRow();
   });
 }
+
 takeUserInput();
